@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-color: #ffffff; /* Default light mode background */
+}
+
+[data-theme='dark'] {
+  --foreground-rgb: 255, 255, 255;
+  --background-color: #000000; /* Dark mode background */
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: var(--background-color);
+  padding: 1rem;
+}
+
+.favorite-rank-column {
+  width: 80px;
+}
+
+.crypto-column {
+  width: 150px;
+}
+
+.table-fixed {
+  table-layout: fixed;
+  width: 100%;
+}
