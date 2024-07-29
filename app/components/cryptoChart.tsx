@@ -1,4 +1,4 @@
-"use client";  
+"use client";
 
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
@@ -15,7 +15,7 @@ import {
   TimeScale,
   ChartOptions,
 } from 'chart.js';
-import { HistoricalUIData } from '../@types'; 
+import { HistoricalUIData } from '../@types';
 import { fetchCryptoHistory } from '../services/cryptoService';
 import { chartDays } from '../config/chart.config';
 
@@ -67,6 +67,7 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ cryptoId, cryptoName }) => {
 
   const options: ChartOptions<'line'> = {
     responsive: true,
+    maintainAspectRatio: false, // Added to ensure chart uses full height
     plugins: {
       legend: {
         display: true,
@@ -97,13 +98,15 @@ const CryptoChart: React.FC<CryptoChartProps> = ({ cryptoId, cryptoName }) => {
   };
 
   return (
-    <div>
-      <Line data={data} options={options} />
+    <div className="h-full flex flex-col pb-4 mb-4">
+      <div className="flex-grow">
+        <Line data={data} options={options} />
+      </div>
       <div className="mt-4 flex justify-center">
         {chartDays.map((day) => (
           <button
             key={day.value}
-            className={`btn ${day.value === days ? 'btn-primary' : 'btn-secondary'} mx-1`}
+            className={`border-2 border-gray-300 mx-1 px-2 py-1 ${day.value === days ? 'font-bold' : ''}`}
             onClick={() => setDays(day.value)}
           >
             {day.label}

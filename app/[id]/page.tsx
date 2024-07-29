@@ -33,11 +33,11 @@ const CryptoDetailPage = ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div className="flex">
-      <div className="w-1/3 p-4">
+    <div className="flex h-screen">
+      <div className="w-1/3 p-4 flex flex-col justify-center">
         <CryptoDetail crypto={crypto} />
       </div>
-      <div className="w-2/3 p-4">
+      <div className="w-2/3 p-4 flex flex-col">
         <CryptoChart cryptoId={crypto.id} cryptoName={crypto.name} />
       </div>
     </div>
